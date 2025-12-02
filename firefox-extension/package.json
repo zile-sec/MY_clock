@@ -1,0 +1,14 @@
+{
+  "name": "minimalist-productivity-firefox",
+  "version": "1.0.0",
+  "description": "A beautiful productivity dashboard Firefox extension",
+  "scripts": {
+    "start": "web-ext run --verbose",
+    "build": "web-ext build",
+    "lint": "web-ext lint",
+    "sign": "web-ext sign"
+  },
+  "devDependencies": {
+    "web-ext": "^7.11.0"
+  }
+}
