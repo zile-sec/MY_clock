@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 210 50% 98%;
+  --foreground: 222 47% 11%;
+  --card: 210 40% 96%;
+  --card-foreground: 222 47% 11%;
+  --popover: 210 40% 96%;
+  --popover-foreground: 222 47% 11%;
+  --primary: 221 83% 53%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 90%;
+  --secondary-foreground: 222 47% 11%;
+  --muted: 210 40% 90%;
+  --muted-foreground: 215 16% 47%;
+  --accent: 210 40% 90%;
+  --accent-foreground: 222 47% 11%;
+  --destructive: 0 85% 60%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: 221 83% 53%;
+  --radius: 1rem;
+}
+
+.dark {
+  --background: 222 47% 11%;
+  --foreground: 210 40% 98%;
+  --card: 222 47% 14%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222 47% 14%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 217 91% 60%;
+  --primary-foreground: 222 47% 11%;
+  --secondary: 217 32% 17%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217 32% 17%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 217 32% 17%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217 32% 17%;
+  --input: 217 32% 17%;
+  --ring: 224 76% 48%;
+}
+
+body {
+  @apply bg-background text-foreground;
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateX(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateX(180deg);
+}
+
+.digit-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.digit-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: 10;
+}
+
+.light .digit-card::before {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Windows-style wallpaper background - Updated for proper image fitting */
+.win11-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -1;
+  transition: background-image 0.5s ease-in-out;
+
+  /* Windows-style background sizing and positioning */
+  background-size: cover;
+  background-position: center center;
+
+  /* Ensure the image covers the entire viewport while maintaining aspect ratio */
+  background-clip: border-box;
+  background-origin: padding-box;
+}
+
+/* Alternative sizing options for different image aspect ratios */
+.win11-background.contain-mode {
+  background-size: contain;
+  background-color: #000; /* Fallback color for letterboxing */
+}
+
+.win11-background.stretch-mode {
+  background-size: 100% 100%; /* Stretch to fill (may distort) */
+}
+
+.win11-background.fit-width {
+  background-size: 100% auto;
+  background-position: center top;
+}
+
+.win11-background.fit-height {
+  background-size: auto 100%;
+  background-position: center center;
+}
+
+/* Content container that sits on top of the background */
+.content-container {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Responsive adjustments for different screen sizes */
+@media (max-width: 768px) {
+  .win11-background {
+    /* On mobile, ensure the image covers properly */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: scroll; /* Better performance on mobile */
+  }
+}
+
+/* For tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .win11-background {
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+/* For desktop screens */
+@media (min-width: 1024px) {
+  .win11-background {
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+  }
+}
+
+/* For ultra-wide screens */
+@media (min-width: 1920px) {
+  .win11-background {
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+/* For very tall screens (portrait orientation) */
+@media (orientation: portrait) {
+  .win11-background {
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+/* For very wide screens (landscape orientation) */
+@media (orientation: landscape) {
+  .win11-background {
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .win11-background {
+    /* Ensure crisp images on high DPI displays */
+    background-size: cover;
+    background-position: center center;
+  }
+}

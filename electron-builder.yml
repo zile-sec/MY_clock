@@ -1,0 +1,15 @@
+appId: com.minimalist.productivity
+productName: Minimalist Productivity
+directories:
+  buildResources: resources
+  output: dist
+files:
+  - out/**/*
+  - electron/**/*
+  - resources/**/*
+win:
+  target: nsis
+  icon: resources/icon.ico  # Make sure this path is correct
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
